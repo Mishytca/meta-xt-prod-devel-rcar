@@ -1,0 +1,39 @@
+/*
+ * Device Tree default chosen node for systems running XEN hypervisor
+ *
+ * Copyright (C) 2019 EPAM Systems.
+ *
+ * This file is licensed under the terms of the GNU General Public License
+ * version 2.  This program is licensed "as is" without any warranty of any
+ * kind, whether express or implied.
+ *
+ * After upgrading to Yocto Scarthgap, the default dom0_mem=256M was no longer
+ * sufficient for a proper Dom0 startup. The system failed to initialize Dom0
+ * correctly due to insufficient allocated memory.
+ *
+ * This file is a copy of the original one, with only a single modification:
+ * the dom0_mem parameter has been increased to 272M (256+16M).
+ *
+ * This is the simplest and most effective fix that resolves the issue.
+ */
+
+
+/ {
+	chosen {
+		bootargs = "dom0_mem=272M console=dtuart dtuart=serial0 dom0_max_vcpus=4 bootscrub=0 loglvl=info hmp-unsafe=true xsm=flask console_timestamps=boot";
+		xen,dom0-bootargs = "console=hvc0 ignore_loglevel";
+		/delete-property/stdout-path;
+		modules {
+			#address-cells = <2>;
+			#size-cells = <2>;
+			module@1 {
+				compatible = "xen,linux-zimage", "xen,multiboot-module";
+				reg = <0x0 0x8a000000 0x0 0x02000000>;
+			};
+			module@2 {
+				compatible = "xen,xsm-policy", "xen,multiboot-module";
+				reg = <0x0 0x8c000000 0x0 0x10000>;
+			};
+		};
+	};
+};
