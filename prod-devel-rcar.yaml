@@ -25,19 +25,19 @@ common_data:
   sources: &COMMON_SOURCES
     - type: git
       url: https://git.yoctoproject.org/poky
-      rev: "e938b18b5342bd28eadb44ad39dbf1f5cf5be09b" # kirkstone
+      rev: "fb91a49387cfb0c8d48303bb3354325ba2a05587" # tag: scarthgap-5.0 (from https://elinux.org)
     - type: git
       url: https://github.com/openembedded/meta-openembedded
-      rev: "9a24b7679810628b594cc5a9b52f77f53d37004f" # kirkstone
+      rev: "a72010b414ee3d73888ac9cb4e310e8f05e13aea" # scarthgap (from https://elinux.org)
     - type: git
       url: https://git.yoctoproject.org/meta-virtualization
-      rev: "e0cd09e3b8367e2745a27db2e7ff1f8452c8cf41" # kirkstone
+      rev: "af1db2042caf8021d767dce1b26c08b59b96f3d1" # scarthgap latest commit ID
     - type: git
       url: https://github.com/xen-troops/meta-xt-common.git
-      rev: "09d7a4c5fd4ebff2f78129f6798af1f4d699b26d" # master
+      rev: "1164ec5123bfe687503b79126cbd2d86dfa39eaf" # master latest commit ID
     - type: git
       url: https://github.com/xen-troops/meta-xt-rcar.git
-      rev: "f5b31e9cb4e3521bece7f3f1dd7473c60a17df7a" # kirkstone
+      rev: "fdd4643741201f94394eeb3ad994725e332fbd50" # master latest commit ID
   # Common configuration options for all yocto-based domains
   conf: &COMMON_CONF
     - [SSTATE_DIR, "${TOPDIR}/../common_data/sstate"]
@@ -184,10 +184,10 @@ components:
       - *COMMON_SOURCES
       - type: git
         url: https://github.com/renesas-rcar/meta-renesas.git
-        rev: "11221be7ff3a535f17357bc8ac7e2851d0e8ff02" # kirkstone-dev
+        rev: "bdab02fbfbbd79565b6db52a6fa62aad9b15aa99" #scarthgap-dev
       - type: git
         url: https://git.yoctoproject.org/meta-selinux
-        rev: "a401f4b2816a0b41ce8d9351542658c721935bcd" # kirkstone
+        rev: "3aff015697fa056b4af83b1c9ba44eca346a8a37" # scarthgap the same as in meta-xt-prod-devel-rcar-gen4
     builder:
       type: yocto
       work_dir: "%{DOMD_BUILD_DIR}"
@@ -259,7 +259,7 @@ components:
       - *COMMON_SOURCES
       - type: git
         url: https://github.com/renesas-rcar/meta-renesas.git
-        rev: "11221be7ff3a535f17357bc8ac7e2851d0e8ff02" # kirkstone-dev
+        rev: "bdab02fbfbbd79565b6db52a6fa62aad9b15aa99" #scarthgap-dev
     builder:
       type: yocto
       work_dir: "%{DOMU_BUILD_DIR}"
