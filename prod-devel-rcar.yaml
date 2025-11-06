@@ -36,8 +36,8 @@ common_data:
       url: https://github.com/xen-troops/meta-xt-common.git
       rev: "1164ec5123bfe687503b79126cbd2d86dfa39eaf" # master latest commit ID
     - type: git
-      url: https://github.com/xen-troops/meta-xt-rcar.git
-      rev: "fdd4643741201f94394eeb3ad994725e332fbd50" # master latest commit ID
+      url: https://github.com/Mishytca/meta-xt-rcar.git
+      rev: "f799514f3e2a37775de5b1bb1ce2d5946c7b1316" # for-testing latest commit ID
   # Common configuration options for all yocto-based domains
   conf: &COMMON_CONF
     - [SSTATE_DIR, "${TOPDIR}/../common_data/sstate"]
