@@ -1,0 +1,18 @@
+[Unit]
+Description=Weston Wayland Compositor
+RequiresMountsFor=/run
+Conflicts=plymouth-quit.service
+After=systemd-user-sessions.service plymouth-quit-wait.service
+
+[Service]
+User=%i
+PAMName=login
+EnvironmentFile=-/etc/default/weston
+StandardError=journal
+PermissionsStartOnly=true
+IgnoreSIGPIPE=no
+
+Restart=on-failure
+RestartSec=5
+
+ExecStart=/usr/bin/weston-start -v -e -- $OPTARGS
