@@ -296,6 +296,7 @@ components:
         - [EXTRA_IMAGEDEPENDS:remove, "arm-trusted-firmware"]
         - [EXTRA_IMAGEDEPENDS:remove, "optee-os"]
         - [EXTRA_IMAGEDEPENDS:remove, "u-boot"]
+        - [BBMASK:append, " meta-xt-domu-gen3/recipes-kernel/kernel-module-gles"]
 
       layers:
         - "../meta-openembedded/meta-oe"
